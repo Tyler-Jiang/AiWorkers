@@ -5,6 +5,10 @@ from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+# 始终从 backend/.env 加载（与 uvicorn 启动时当前工作目录无关）
+_BACKEND_DIR = Path(__file__).resolve().parent.parent
+_ENV_FILE = _BACKEND_DIR / ".env"
+
 
 class Settings(BaseSettings):
     """见 Cursor Cloud Agents 文档：需 Dashboard 申请的 API Key；仓库格式 owner/repo。"""
@@ -23,7 +27,11 @@ class Settings(BaseSettings):
     studio_output_dir: str = "../output/mini-game"
     """相对 `backend` 工作目录的产出项目路径；须与推送到 CURSOR_REPOSITORY 的目录一致，Agent 才能改到代码。"""
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=_ENV_FILE,
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
 
 
 def resolved_studio_output_dir(settings: Settings) -> Path:
@@ -37,3 +45,8 @@ def resolved_studio_output_dir(settings: Settings) -> Path:
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
+
+
+def clear_settings_cache() -> None:
+    """热重载或测试时如需重新读 .env 可调用（一般无需使用）。"""
+    get_settings.cache_clear()
