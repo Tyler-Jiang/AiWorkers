@@ -1,0 +1,4 @@
+# 产出子项目依赖与构建（源码仍纳入版本库，由 Agent 修改）
+output/**/node_modules/
+output/**/dist/
+output/**/.vite/
