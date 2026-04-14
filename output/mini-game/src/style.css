@@ -1,8 +1,9 @@
 :root {
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   line-height: 1.5;
-  color: #c8d0e0;
-  background: #0c0e14;
+  font-weight: 400;
+  color: #2a3240;
+  background: #f4f7fb;
 }
 
 * {
@@ -12,29 +13,181 @@
 body {
   margin: 0;
   min-height: 100vh;
+  color: #2a3240;
+  background: radial-gradient(circle at top, #ffffff 0%, #f0f4fa 52%, #eaf1fb 100%);
 }
 
-.shell {
-  max-width: 40rem;
-  margin: 0 auto;
-  padding: 2rem 1.25rem;
+#app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.game-shell {
+  width: 100%;
+  max-width: 36rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.header-card,
+.coin-card,
+.action-card,
+.upgrade-card,
+.status-card,
+.guide-card {
+  background: #ffffff;
+  border: 1px solid #dde6f3;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(123, 145, 177, 0.12);
+}
+
+.header-card,
+.coin-card,
+.action-card,
+.upgrade-card,
+.status-card {
+  padding: 1rem 1.1rem;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
 }
 
 h1 {
-  font-size: 1.25rem;
-  color: #00f5d4;
-  letter-spacing: 0.02em;
+  font-size: 1.45rem;
+  color: #2b3c66;
 }
 
-.lead {
-  color: #eef2ff;
+h2 {
+  font-size: 1.05rem;
+  color: #3d4e7a;
+  margin-bottom: 0.6rem;
 }
 
-code {
-  font-family: ui-monospace, Consolas, monospace;
-  font-size: 0.9em;
-  padding: 0.1em 0.35em;
-  border-radius: 4px;
-  background: rgba(0, 245, 212, 0.1);
-  color: #7aeedd;
+.subtitle {
+  margin-top: 0.4rem;
+  color: #647291;
+}
+
+.version {
+  margin-top: 0.55rem;
+  color: #4f67a6;
+  font-weight: 600;
+}
+
+.label {
+  color: #6f7f9f;
+  margin-bottom: 0.25rem;
+}
+
+.coin-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d4fa3;
+}
+
+.income {
+  margin-top: 0.45rem;
+  color: #516492;
+}
+
+.upgrade-card p + p {
+  margin-top: 0.45rem;
+}
+
+button {
+  font: inherit;
+  border: none;
+  border-radius: 10px;
+  padding: 0.72rem 1rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.2s ease;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.primary-btn {
+  width: 100%;
+  color: #ffffff;
+  background: linear-gradient(180deg, #62a1ff 0%, #4b84e4 100%);
+  box-shadow: 0 6px 14px rgba(77, 129, 227, 0.35);
+  font-weight: 600;
+}
+
+.upgrade-btn {
+  margin-top: 0.85rem;
+  width: 100%;
+  color: #ffffff;
+  background: linear-gradient(180deg, #67b5a7 0%, #449785 100%);
+  box-shadow: 0 6px 14px rgba(70, 148, 134, 0.35);
+  font-weight: 600;
+}
+
+.secondary-btn {
+  color: #42567f;
+  background: #eff4ff;
+  border: 1px solid #d6e0f3;
+  font-weight: 600;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  box-shadow: none;
+}
+
+.status-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.save-tip {
+  color: #4e679e;
+  min-height: 1.3rem;
+  font-size: 0.95rem;
+}
+
+.guide-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(54, 74, 111, 0.36);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.guide-mask.hidden {
+  display: none;
+}
+
+.guide-card {
+  width: min(30rem, 100%);
+  padding: 1.2rem;
+}
+
+.guide-card h2 {
+  margin-bottom: 0.6rem;
+}
+
+.guide-card ol {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+  color: #4f5f7f;
+}
+
+.guide-card li + li {
+  margin-top: 0.4rem;
 }
